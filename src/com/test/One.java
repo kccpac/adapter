@@ -6,7 +6,6 @@ import java.util.Date;
 
 import com.test.provider.dataContract;
 
-import android.R.color;
 import android.support.v7.app.ActionBarActivity;
 import android.content.ContentResolver;
 import android.content.ContentValues;

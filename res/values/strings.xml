@@ -18,4 +18,6 @@
     <string name="login">Login</string>
     <string name="server">Server IP or Hostname</string>
     <string name="localhost">https://10.0.2.2:8443</string>
+    <string name="admin">admin</string>
+    <string name="pass">pass</string>
 </resources>
