@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.adapter.service.common.IAlarmService;
+import com.adapter.service.common.IAlarmServiceCallback;
 import com.adapter.service.common.ILoaderService;
 import com.adapter.service.loaderServiceImpl;
 //import com.test.service.loaderServiceImpl.LocalBinder;
@@ -22,26 +24,38 @@ public class Three extends ActionBarActivity {
 
 	private final String TAG = Three.class.getName();
 	private loaderServiceImpl loaderService = null;
+	private IAlarmService alarmService = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
 		setContentView(R.layout.activity_three);
-		Intent intent = new Intent(this, loaderServiceImpl.class);
-		bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+		mIsBound = false;
+
 	}
 	
 	private ServiceConnection mConnection = new ServiceConnection() {
 		@Override
         public void onServiceConnected(ComponentName className,
-                IBinder service) {
+                IBinder iservice) {
             // This is called when the connection with the service has been
             // established, giving us the service object we can use to
             // interact with the service.  We are communicating with our
             // service through an IDL interface, so get a client-side
             // representation of that from the raw service object.
-			Log.i(TAG, "onServiceConnected tid=" + (int) Thread.currentThread().getId());
+			Log.i(TAG, 	"onServiceConnected name= " + className.getClassName() + 
+						" tid=" + (int) Thread.currentThread().getId());
 			
+			alarmService = IAlarmService.Stub.asInterface(iservice);
+			
+			try {				
+				alarmService.registerAlarmCallback(mIAlarmServiceCallback);
+				alarmService.setup();
+				mIsBound = true;
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			//loaderService = ILoaderService.Stub.asInterface(service);
 			
 			//LocalBinder binder = (LocalBinder) service;
@@ -65,43 +79,67 @@ public class Three extends ActionBarActivity {
             // unexpectedly disconnected -- that is, its process crashed.
 			Log.i(TAG, "onServiceDisconnected");
 			loaderService = null;
+			alarmService = null;
+			mIsBound = false;
 
             // As part of the sample, tell the user what happened.
             //Toast.makeText(Three.class., "onServiceDisconnected", Toast.LENGTH_SHORT).show();
         }
     };
     
-    @Override 
+
+	private boolean mIsBound;
+	
+	@Override 
     public void onResume()
     {
-    	super.onResume();
-/*    	Log.i(TAG, "onResume");
-		//try
-		{
-	    	if (loaderService != null)
-	    	{
-				loaderService.setup();
-			}    		
-    	} */
-		/*catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+    	Log.i(TAG, "onResume");
+		super.onResume();
+    	
+    	if (mIsBound == false)
+    	{
+    		Log.i(TAG, "Lanuch");
+    		Intent intent = new Intent(IAlarmService.class.getName());
+    		bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+    	}
+    		
+
+    }
+    
+    @Override
+    public void onPause()
+    {
+    	Log.i(TAG, "onPause");
+    	if (mIsBound == true) {
+			Log.i(TAG, "unbindService");			
+			unbindService(mConnection);
+			alarmService= null;
+			mIsBound = false;
+		}
+    	super.onPause();
     }
     
     @Override 
     public void onDestroy()
     {
     	Log.i(TAG, "onDestroy");
-    	if (loaderService != null)
+  /*  	if (loaderService != null)
     	{
     		unbindService(mConnection);
     		loaderService = null;    		
     	}    	
-    	
+    */	
     	super.onDestroy();
     }
 
+	private final IAlarmServiceCallback mIAlarmServiceCallback = new IAlarmServiceCallback.Stub() {
+		@Override
+		public void wakeup() throws RemoteException {
+			// TODO Auto-generated method stub
+			Log.i(TAG, "wakeup");
+			
+		}
+	};
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
