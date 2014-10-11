@@ -4,7 +4,7 @@
 **
 ** 
 */
-package com.test;
+package com.adapter;
 
 public interface TaskCallback<T> {
 

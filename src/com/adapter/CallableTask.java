@@ -4,7 +4,7 @@
 **
 ** 
 */
-package com.test;
+package com.adapter;
 
 import java.util.concurrent.Callable;
 

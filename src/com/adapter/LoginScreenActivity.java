@@ -1,9 +1,9 @@
-package com.test;
+package com.adapter;
 
 import java.util.Collection;
 import java.util.concurrent.Callable;
 
-import com.test.provider.dataRecord;
+import com.adapter.provider.dataRecord;
 
 import android.app.Activity;
 import android.content.Intent;

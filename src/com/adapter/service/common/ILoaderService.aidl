@@ -1,4 +1,4 @@
-package com.test.service;
+package com.adapter.service.common;
 
 interface ILoaderService {
    void setup();

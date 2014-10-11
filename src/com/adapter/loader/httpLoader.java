@@ -1,4 +1,4 @@
-package com.test.loader;
+package com.adapter.loader;
 
 public class httpLoader {
 	

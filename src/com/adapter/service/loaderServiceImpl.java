@@ -1,6 +1,6 @@
-package com.test.service;
+package com.adapter.service;
 
-import com.test.service.ILoaderService;
+import com.adapter.service.common.ILoaderService;
 
 import android.app.Service;
 import android.content.ComponentName;

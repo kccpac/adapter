@@ -1,4 +1,4 @@
-package com.test;
+package com.adapter;
 
 import java.net.URL;
 

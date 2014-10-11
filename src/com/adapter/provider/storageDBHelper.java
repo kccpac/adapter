@@ -1,4 +1,4 @@
-package com.test.provider;
+package com.adapter.provider;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

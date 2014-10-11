@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.test"
+    package="com.adapter"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -46,14 +46,14 @@
         </activity>
 
         <provider
-            android:name="com.test.provider.dataStorage"
-            android:authorities="com.test.provider.dataStorage"
+            android:name="com.adapter.provider.dataStorage"
+            android:authorities="com.adapter.provider.dataStorage"
             android:exported="false"
             android:multiprocess="true" >
         </provider>
 
         <service
-            android:name="com.test.service.loaderServiceImpl"
+            android:name="com.adapter.service.loaderServiceImpl"
             android:multiprocess="true" />
     </application>
 

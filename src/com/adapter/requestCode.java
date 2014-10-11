@@ -1,4 +1,4 @@
-package com.test;
+package com.adapter;
 
 public enum requestCode {
 	INTENT_TTS_DATA_CHECK(1),

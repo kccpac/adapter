@@ -1,4 +1,4 @@
-package com.test;
+package com.adapter;
 
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;

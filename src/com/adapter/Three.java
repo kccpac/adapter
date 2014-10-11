@@ -1,4 +1,4 @@
-package com.test;
+package com.adapter;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.ComponentName;
@@ -13,10 +13,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.test.service.ILoaderService;
-import com.test.service.loaderServiceImpl;
+import com.adapter.service.common.ILoaderService;
+import com.adapter.service.loaderServiceImpl;
 //import com.test.service.loaderServiceImpl.LocalBinder;
-import com.test.service.loaderServiceImpl.LocalBinder;
+//import com.test.service.common.loaderServiceImpl.LocalBinder;
 
 public class Three extends ActionBarActivity {
 
@@ -44,8 +44,8 @@ public class Three extends ActionBarActivity {
 			
 			//loaderService = ILoaderService.Stub.asInterface(service);
 			
-			LocalBinder binder = (LocalBinder) service;
-			loaderService = binder.getService();
+			//LocalBinder binder = (LocalBinder) service;
+			//loaderService = binder.getService();
 
             // We want to monitor the service for as long as we are
             // connected to it.

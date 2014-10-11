@@ -4,7 +4,7 @@
  **
  ** 
  */
-package com.test.oauth;
+package com.adapter.oauth;
 
 import java.util.ArrayList;
 import java.util.List;

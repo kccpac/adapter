@@ -1,6 +1,6 @@
-package com.test.provider;
+package com.adapter.provider;
 
-import com.test.imageInfo;
+import com.adapter.imageInfo;
 
 public class dataRecord {
 

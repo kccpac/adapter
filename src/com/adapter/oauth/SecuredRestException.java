@@ -4,7 +4,7 @@
  **
  ** 
  */
-package com.test.oauth;
+package com.adapter.oauth;
 
 /**
  * A special class made to specify exceptions that are thrown by our

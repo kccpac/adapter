@@ -1,10 +1,10 @@
-package com.test;
+package com.adapter;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.test.provider.dataContract;
+import com.adapter.provider.dataContract;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.ContentResolver;
